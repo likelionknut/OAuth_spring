@@ -30,6 +30,21 @@
 							return;
 						}
 
+						getFriends(
+								res['access_token'],
+								function(friends) {
+									$(friends)
+											.each(
+													function(index, friend) {
+														$('#friends')
+																.find('ul')
+																.append(
+																		'<li>'
+																				+ friend.name
+																				+ '</li>');
+													});
+								});
+
 					});
 
 	function getResponse(fragment) {

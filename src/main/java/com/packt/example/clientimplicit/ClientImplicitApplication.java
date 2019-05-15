@@ -14,5 +14,8 @@ public class ClientImplicitApplication {
 
 	@GetMapping("/")
 	public String client() { return "client"; }
+	
+	@GetMapping("/callback")
+	public String callback() { return "callback_page"; }
 
 }

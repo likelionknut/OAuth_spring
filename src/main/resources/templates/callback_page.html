@@ -15,20 +15,23 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript">
 	/*<![CDATA[*/
-	$(document).ready(function() {
-		var fragment = window.location.hash;
-		var res = getResponse(fragment);
+	$(document)
+			.ready(
+					function() {
+						var fragment = window.location.hash;
+						var res = getResponse(fragment);
 
-		window.location.hash = '_#';
+						window.location.hash = '_#';
 
-		if (res.hasError()) {
-			$("<div>Error trying to obtain user's authorization!</div>")
-				.insertBefore('#friends');
-			return;
-		}
+						if (res.hasError()) {
+							$(
+									"<div>Error trying to obtain user's authorization!</div>")
+									.insertBefore('#friends');
+							return;
+						}
 
-	});
-	
+					});
+
 	function getResponse(fragment) {
 		var attributes = fragment.slice(1).split('&');
 		var response = {};
@@ -43,6 +46,26 @@
 		};
 
 		return response;
+	}
+
+	function getFriends(accessToken, callback) {
+		var baseUrl = 'https://graph.facebook.com/v2.9/';
+		var endpoint = 'me/friends';
+		var url = baseUrl + endpoint;
+
+		$.ajax({
+			url : url,
+			beforeSend : function(xhr) {
+				xhr.setRequestHeader("Authorization", "Bearer " + accessToken);
+			},
+			success : function(result) {
+				var friends = result.data;
+				callback(friends);
+			},
+			error : function(jqXHR, textStatus, errorThrown) {
+				console.log(textStatus);
+			}
+		});
 	}
 
 	/*]]>*/

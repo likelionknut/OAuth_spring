@@ -19,6 +19,23 @@
 		var fragment = window.location.hash;
 
 	});
+	
+	function getResponse(fragment) {
+		var attributes = fragment.slice(1).split('&');
+		var response = {};
+
+		$(attributes).each(function(idx, attr) {
+			var keyValue = attr.split('=');
+			response[keyValue[0]] = keyValue[1];
+		});
+
+		response.hasError = function() {
+			return !response['access_token'];
+		};
+
+		return response;
+	}
+
 	/*]]>*/
 </script>
 </html>

@@ -2,8 +2,9 @@ package com.packt.example.clientimplicit;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.stereotype.Controller;
 
-@SpringBootApplication
+@Controller @SpringBootApplication
 public class ClientImplicitApplication {
 
 	public static void main(String[] args) {

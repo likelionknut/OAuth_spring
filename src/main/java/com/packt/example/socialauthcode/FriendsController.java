@@ -25,6 +25,13 @@ public class FriendsController {
 			return "redirect:/connect/facebook";
 		}
 
+		String[] fields = { "id", "email", "name" };
+		User userProfile = facebook.fetchObject("me", User.class, fields);
+		
+		model.addAttribute("facebookProfile", userProfile);
+		PagedList<Reference> friends = facebook.friendOperations().getFriends();
+		model.addAttribute("friends", friends);
+
 		return "friends";
 	}
 

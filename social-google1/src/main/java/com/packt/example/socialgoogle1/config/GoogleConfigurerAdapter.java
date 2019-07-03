@@ -16,6 +16,7 @@ import org.springframework.social.connect.ConnectionFactoryLocator;
 import org.springframework.social.connect.ConnectionRepository;
 import org.springframework.social.connect.UsersConnectionRepository;
 import org.springframework.social.connect.mem.InMemoryUsersConnectionRepository;
+import org.springframework.social.connect.web.ConnectController;
 import org.springframework.social.google.api.Google;
 import org.springframework.social.google.connect.GoogleConnectionFactory;
 import org.springframework.social.security.AuthenticationNameUserIdSource;
@@ -48,4 +49,12 @@ public class GoogleConfigurerAdapter extends SocialConfigurerAdapter {
 		GoogleConnectionFactory factory = new GoogleConnectionFactory(this.properties.getAppId(), this.properties.getAppSecret());
 		configurer.addConnectionFactory(factory);
 	}
+	
+	@Bean
+	public ConnectController connectController(ConnectionFactoryLocator locator, ConnectionRepository repository) {
+		ConnectController controller = new ConnectController(locator, repository);
+		controller.setApplicationUrl("http://localhost:8080");
+		return controller;
+	}
+	
 }

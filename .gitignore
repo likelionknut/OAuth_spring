@@ -1,3 +1,6 @@
+test_project/
+spring_initializer_zips/
+
 HELP.md
 /target/
 !.mvn/wrapper/maven-wrapper.jar

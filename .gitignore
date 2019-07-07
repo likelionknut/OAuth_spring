@@ -2,6 +2,7 @@ test_project/
 spring_initializer_zips/
 social-google1/
 auth-code-server/
+implicit-server/
 
 HELP.md
 /target/

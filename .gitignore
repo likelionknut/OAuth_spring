@@ -1,9 +1,11 @@
+### 프로젝트 폴더 ###
 test_project/
 spring_initializer_zips/
 social-google1/
 auth-code-server/
 implicit-server/
 curl참고.txt
+password-server/
 
 HELP.md
 /target/

@@ -6,6 +6,7 @@ auth-code-server/
 implicit-server/
 password-server/
 client-credential-server/
+refresh-server/
 
 HELP.md
 /target/

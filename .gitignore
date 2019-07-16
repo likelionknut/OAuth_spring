@@ -7,6 +7,7 @@ implicit-server/
 password-server/
 client-credential-server/
 refresh-server/
+rdbm-server/
 
 HELP.md
 /target/

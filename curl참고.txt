@@ -48,5 +48,9 @@ http://localhost:8080/oauth/authorize?client_id=clientapp&redirect_uri=http://lo
 curl -X POST --user clientapp:123456 http://localhost:8080/oauth/token -H "content-type: application/x-www-form-urlencoded" -d "code=AscchP&grant_type=authorization_code&redirect_uri=http://localhost:9000/callback&scope=read_profile"
 
 ================================================================
+redis-server
 
+
+
+================================================================
 

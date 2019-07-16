@@ -29,6 +29,12 @@ public class ClientController {
 		return mv;
 	}
 
+	@GetMapping("/dashboard")
+	public ModelAndView dashboard(ModelAndView mv) {
+		mv.addObject("applications", clientRegistrationService.listClientDetails());
+		return mv;
+	}
+
 	@GetMapping("/remove")
 	public ModelAndView remove(@RequestParam(value = "client_id", required = false) String clientId) {
 

@@ -1,6 +1,7 @@
 package com.packt.example.oauth2provider.client;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -40,95 +41,88 @@ public class Application implements ClientDetails {
 	public void setAccessTokenValidity(int accessTokenValidity) {
 		this.accessTokenValidity = accessTokenValidity;
 	}
-	
+
 	public void addRedirectUri(String redirectUri) {
-        this.webServerRedirectUri.add(redirectUri);
-    }
+		this.webServerRedirectUri.add(redirectUri);
+	}
 
-    public void addScope(String scope) {
-        this.scope.add(scope);
-    }
+	public void addScope(String scope) {
+		this.scope.add(scope);
+	}
 
-    public void addResourceId(String resourceId) {
-        this.resourceIds.add(resourceId);
-    }
+	public void addResourceId(String resourceId) {
+		this.resourceIds.add(resourceId);
+	}
 
 	@Override
 	public String getClientId() {
-		// TODO Auto-generated method stub
-		return null;
+		return clientId;
 	}
 
 	@Override
 	public Set<String> getResourceIds() {
-		// TODO Auto-generated method stub
-		return null;
+		return resourceIds;
 	}
 
 	@Override
 	public boolean isSecretRequired() {
-		// TODO Auto-generated method stub
-		return false;
+		return clientType == ClientType.CONFIDENTIAL;
+//		return Collections.unmodifiableSet(resourceIds);
 	}
 
 	@Override
 	public String getClientSecret() {
-		// TODO Auto-generated method stub
-		return null;
+		return clientSecret;
 	}
 
 	@Override
 	public boolean isScoped() {
-		// TODO Auto-generated method stub
-		return false;
+		return scope.size() > 0;
 	}
 
 	@Override
 	public Set<String> getScope() {
-		// TODO Auto-generated method stub
-		return null;
+		return scope;
+//		return Collections.unmodifiableSet(scope);
 	}
 
 	@Override
 	public Set<String> getAuthorizedGrantTypes() {
-		// TODO Auto-generated method stub
-		return null;
+		Set<String> grantTypes = new HashSet<>();
+        grantTypes.add("authorization_code");
+        grantTypes.add("refresh_token");
+        return grantTypes;
 	}
 
 	@Override
 	public Set<String> getRegisteredRedirectUri() {
-		// TODO Auto-generated method stub
-		return null;
+		return webServerRedirectUri;
+//		return Collections.unmodifiableSet(webServerRedirectUri);
 	}
 
 	@Override
 	public Collection<GrantedAuthority> getAuthorities() {
-		// TODO Auto-generated method stub
-		return null;
+		return new HashSet<>();
 	}
 
 	@Override
 	public Integer getAccessTokenValiditySeconds() {
-		// TODO Auto-generated method stub
-		return null;
+		return accessTokenValidity;
 	}
 
 	@Override
 	public Integer getRefreshTokenValiditySeconds() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public boolean isAutoApprove(String scope) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public Map<String, Object> getAdditionalInformation() {
-		// TODO Auto-generated method stub
-		return null;
+		return additionalInformation;
 	}
 
 }

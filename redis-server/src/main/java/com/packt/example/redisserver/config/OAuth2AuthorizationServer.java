@@ -21,18 +21,18 @@ public class OAuth2AuthorizationServer extends AuthorizationServerConfigurerAdap
 
 	@Autowired
 	private RedisConnectionFactory connectionFactory;
-	
-	@Override
-	public void configure(AuthorizationServerEndpointsConfigurer endpoints) {
-		endpoints.authenticationManager(authenticationManager);
-	}
 
 	@Bean
 	public TokenStore tokenStore() {
 		RedisTokenStore redis = new RedisTokenStore(connectionFactory);
 		return redis;
 	}
-	
+
+	@Override
+	public void configure(AuthorizationServerEndpointsConfigurer endpoints) {
+		endpoints.authenticationManager(authenticationManager).tokenStore(tokenStore());
+	}
+
 	@Override
 	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
 		clients.inMemory().withClient("clientapp").secret("123456")

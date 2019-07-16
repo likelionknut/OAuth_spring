@@ -11,16 +11,36 @@ import org.springframework.security.oauth2.provider.ClientDetails;
 
 public class Application implements ClientDetails {
 	private static final long serialVersionUID = 1L;
-	
+
 	private String clientId;
-    private String clientSecret;
-    private ClientType clientType;
-    private Set<String> resourceIds = new HashSet<>();
-    private Set<String> scope = new HashSet<>();
-    private Set<String> webServerRedirectUri = new HashSet<>();
-    private int accessTokenValidity;
-    private Map<String, Object> additionalInformation = new HashMap<>();
-	
+	private String clientSecret;
+	private ClientType clientType;
+	private Set<String> resourceIds = new HashSet<>();
+	private Set<String> scope = new HashSet<>();
+	private Set<String> webServerRedirectUri = new HashSet<>();
+	private int accessTokenValidity;
+	private Map<String, Object> additionalInformation = new HashMap<>();
+
+	public void setName(String name) {
+		additionalInformation.put("name", name);
+	}
+
+	public void setClientType(ClientType clientType) {
+		additionalInformation.put("client_type", clientType.name());
+	}
+
+	public void setClientId(String clientId) {
+		this.clientId = clientId;
+	}
+
+	public void setClientSecret(String clientSecret) {
+		this.clientSecret = clientSecret;
+	}
+
+	public void setAccessTokenValidity(int accessTokenValidity) {
+		this.accessTokenValidity = accessTokenValidity;
+	}
+
 	@Override
 	public String getClientId() {
 		// TODO Auto-generated method stub

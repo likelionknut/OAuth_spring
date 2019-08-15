@@ -9,6 +9,7 @@ client-credential-server/
 refresh-server/
 rdbm-server/
 redis-server/
+oauth2provider/
 
 HELP.md
 /target/
